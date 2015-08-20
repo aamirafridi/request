@@ -87,7 +87,11 @@ function wrapRequestMethod (method, options, requester, verb) {
 
     var target = {}
     extend(true, target, options, params)
-
+    
+    //fixing a bug explained here https://github.com/request/request/commit/ae403dcf92e196991dc1f90a275b794fbf44d260#diff-168726dbe96b3ce427e7fedce31bb0bcR91
+    params = params || {};
+    options = options || {};
+    
     target.pool = params.pool || options.pool
 
     if (verb) {
